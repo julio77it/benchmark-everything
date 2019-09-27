@@ -51,16 +51,12 @@ add_executable(factorial_benchmark
 target_link_libraries(factorial_benchmark
                         PUBLIC CONAN_PKG::google-benchmark
                         PUBLIC CONAN_PKG::fmt
-                        PUBLIC CONAN_PKG::spdlog
-                        PUBLIC CONAN_PKG::sqlite3
                         PUBLIC CONAN_PKG::range-v3
                         PUBLIC CONAN_PKG::boost)
 
 target_include_directories(factorial_benchmark
                             PUBLIC CONAN_PKG::google-benchmark
                             PUBLIC CONAN_PKG::fmt
-                            PUBLIC CONAN_PKG::spdlog
-                            PUBLIC CONAN_PKG::sqlite3
                             PUBLIC CONAN_PKG::range-v3
                             PUBLIC CONAN_PKG::boost)
 
