@@ -15,4 +15,17 @@ static void BM_StringCopy(benchmark::State& state)
 }
 BENCHMARK(BM_StringCopy);
 
+static void BM_StringAssign(benchmark::State& state)
+{
+	std::string x = "hello";
+	for (auto _ : state)
+	{
+		{
+		std::string assign;
+		assign = x;
+		}
+	}
+}
+BENCHMARK(BM_StringAssign);
+
 BENCHMARK_MAIN();
