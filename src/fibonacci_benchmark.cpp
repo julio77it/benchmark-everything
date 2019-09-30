@@ -29,4 +29,17 @@ static void BM_Memoized_fibonacci(benchmark::State& state)
 }
 BENCHMARK(BM_Memoized_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
 
+mem_fibonacci cached_fibonacci;
+
+static void BM_Cached_fibonacci(benchmark::State& state)
+{
+    while (state.KeepRunning())
+    {
+        uint64_t max = static_cast<uint64_t>(state.range(0));
+        for (uint64_t k = 0;k <= max; ++k)
+            [[maybe_unused]] auto result = cached_fibonacci(k);
+    }
+}
+BENCHMARK(BM_Cached_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
+
 BENCHMARK_MAIN();

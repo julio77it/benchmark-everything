@@ -11,7 +11,13 @@ int main()
 
     auto memoized_fibonacci = make_memoized(fibonacci);
 
-    fmt::print("Fibonacci ottimizzato\n");
+    fmt::print("Fibonacci ottimizzato (memoization generica)\n");
     fmt::print("f({}) = {}\n",  15, memoized_fibonacci( 15));
     fmt::print("f({}) = {}\n",  14, memoized_fibonacci( 14));
+
+    mem_fibonacci mfibonacci;
+
+    fmt::print("Fibonacci ottimizzato (memoization specializzata)\n");
+    fmt::print("f({}) = {}\n",  15, mfibonacci( 15));
+    fmt::print("f({}) = {}\n",  14, mfibonacci( 14));
 }
