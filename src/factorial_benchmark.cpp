@@ -27,6 +27,19 @@ static void BM_MemoizedFactorial(benchmark::State& state)
 }
 BENCHMARK(BM_MemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
 
+mem_factorial mem_fact;
+
+static void BM_CachedFactorial(benchmark::State& state)
+{
+    uint32_t n = static_cast<uint32_t>(state.range(0));
+
+    while (state.KeepRunning())
+    {
+        [[maybe_unused]] auto r = mem_fact(n);
+    }
+}
+BENCHMARK(BM_CachedFactorial)->RangeMultiplier(2)->Range(2, 16);
+
 static void BM_TGamma(benchmark::State& state)
 {
     uint64_t n = static_cast<uint64_t>(state.range(0));
