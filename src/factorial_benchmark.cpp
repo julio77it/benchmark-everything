@@ -27,6 +27,24 @@ static void BM_MemoizedFactorial(benchmark::State& state)
 }
 BENCHMARK(BM_MemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
 
+auto recursive_memoized_factorial = make_memoized_r<uint64_t(uint64_t)>(
+    [](auto& factorial, uint64_t n) {
+        return n <= 1 
+             ? 1
+             : n * factorial(n - 1);
+    });
+
+static void BM_RecursiveMemoizedFactorial(benchmark::State& state)
+{
+    uint32_t n = static_cast<uint32_t>(state.range(0));
+
+    while (state.KeepRunning())
+    {
+        [[maybe_unused]] auto r = recursive_memoized_factorial(n);
+    }
+}
+BENCHMARK(BM_RecursiveMemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
+
 mem_factorial mem_fact;
 
 static void BM_CachedFactorial(benchmark::State& state)
