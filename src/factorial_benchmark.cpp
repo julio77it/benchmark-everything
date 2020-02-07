@@ -9,7 +9,10 @@ static void BM_Factorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        [[maybe_unused]] auto r = factorial(n);
+        //[[maybe_unused]] auto r = 
+        benchmark::DoNotOptimize(
+            factorial(n)
+        );
     }
 }
 BENCHMARK(BM_Factorial)->RangeMultiplier(2)->Range(2, 16);
@@ -22,7 +25,10 @@ static void BM_MemoizedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        [[maybe_unused]] auto r = memoized_factorial(n);
+        //[[maybe_unused]] auto r = 
+        benchmark::DoNotOptimize(
+            memoized_factorial(n)
+        );
     }
 }
 BENCHMARK(BM_MemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
@@ -40,7 +46,10 @@ static void BM_RecursiveMemoizedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        [[maybe_unused]] auto r = recursive_memoized_factorial(n);
+        //[[maybe_unused]] auto r = 
+        benchmark::DoNotOptimize(
+            recursive_memoized_factorial(n)
+        );
     }
 }
 BENCHMARK(BM_RecursiveMemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
@@ -53,7 +62,10 @@ static void BM_CachedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        [[maybe_unused]] auto r = mem_fact(n);
+        //[[maybe_unused]] auto r = 
+        benchmark::DoNotOptimize(
+            mem_fact(n)
+        );
     }
 }
 BENCHMARK(BM_CachedFactorial)->RangeMultiplier(2)->Range(2, 16);
@@ -64,7 +76,10 @@ static void BM_TGamma(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        [[maybe_unused]] auto r = static_cast<decltype(n)>(std::tgammal(n+1));
+        //[[maybe_unused]] auto r = 
+        benchmark::DoNotOptimize(
+            static_cast<decltype(n)>(std::tgammal(n+1))
+        );
     }
 }
 BENCHMARK(BM_TGamma)->RangeMultiplier(2)->Range(2, 16);

@@ -11,7 +11,10 @@ static void BM_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            [[maybe_unused]] auto result = fibonacci(k);
+            //[[maybe_unused]] auto result = 
+            benchmark::DoNotOptimize(
+                fibonacci(k)
+            );
     }
 }
 BENCHMARK(BM_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
@@ -24,7 +27,10 @@ static void BM_Memoized_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            [[maybe_unused]] auto result = memoized_fibonacci(k);
+            //[[maybe_unused]] auto result = 
+            benchmark::DoNotOptimize(
+                memoized_fibonacci(k)
+            );
     }
 }
 BENCHMARK(BM_Memoized_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
@@ -42,7 +48,10 @@ static void BM_RecursiveMemoized_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            [[maybe_unused]] auto result = recursive_memoized_fibonacci(k);
+            //[[maybe_unused]] auto result = 
+            benchmark::DoNotOptimize(
+                recursive_memoized_fibonacci(k)
+            );
     }
 }
 BENCHMARK(BM_RecursiveMemoized_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
@@ -55,7 +64,10 @@ static void BM_Cached_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            [[maybe_unused]] auto result = cached_fibonacci(k);
+            //[[maybe_unused]] auto result = 
+            benchmark::DoNotOptimize(
+                cached_fibonacci(k)
+            );
     }
 }
 BENCHMARK(BM_Cached_fibonacci)->RangeMultiplier(RMul)->Range(RMin, RMax);
