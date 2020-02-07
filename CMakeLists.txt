@@ -116,3 +116,32 @@ target_include_directories(string_benchmark
                             PUBLIC CONAN_PKG::google-benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::boost)
+
+#
+# PARTITION
+#
+add_executable(partition
+                src/partition.cpp)
+
+target_link_libraries(partition
+                    PUBLIC CONAN_PKG::fmt
+                    PUBLIC CONAN_PKG::range-v3)
+
+target_include_directories(partition
+                            PUBLIC CONAN_PKG::fmt
+                            PUBLIC CONAN_PKG::range-v3)
+         
+add_executable(partition_benchmark
+                src/partition_benchmark.cpp)
+
+target_link_libraries(partition_benchmark
+                    PUBLIC CONAN_PKG::google-benchmark
+                    PUBLIC CONAN_PKG::fmt
+                    PUBLIC CONAN_PKG::boost
+                    PUBLIC CONAN_PKG::range-v3)
+
+target_include_directories(partition_benchmark
+                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::fmt
+                            PUBLIC CONAN_PKG::boost
+                            PUBLIC CONAN_PKG::range-v3)
