@@ -7,6 +7,11 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(THIRD_PARTY_ROOT ${CMAKE_BINARY_DIR}/thirdparty)
+set(THIRD_PARTY ${THIRD_PARTY_ROOT}/src)
+
+include(ExternalProject)
+
 #
 # CONAN DEPENDENCIES
 #
@@ -26,7 +31,7 @@ conan_cmake_run(BASIC_SETUP
 #
 # Project Configuration
 #
-set(WARNING_FLAGS "-fconcepts -Wall -Wextra -Wshadow -Wnon-virtual-dtor -Wold-style-cast -Wcast-align -Wunused -Woverloaded-virtual -Wpedantic -Wconversion -Wsign-conversion -Wmisleading-indentation -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wnull-dereference -Wuseless-cast -Wdouble-promotion -Wformat=2")
+set(WARNING_FLAGS "")
 set(CMAKE_CXX_FLAGS "${WARNING_FLAGS}")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O4")
@@ -130,7 +135,7 @@ target_link_libraries(partition
 target_include_directories(partition
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::range-v3)
-         
+
 add_executable(partition_benchmark
                 src/partition_benchmark.cpp)
 
@@ -145,3 +150,30 @@ target_include_directories(partition_benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::boost
                             PUBLIC CONAN_PKG::range-v3)
+
+#
+# IMMER
+#
+ExternalProject_Add(immer
+                    PREFIX ${THIRD_PARTY_ROOT}
+                    GIT_REPOSITORY "https://github.com/arximboldi/immer.git"
+                    UPDATE_COMMAND ""
+                    PATCH_COMMAND ""
+                    CONFIGURE_COMMAND ""
+                    BUILD_COMMAND ""
+                    INSTALL_COMMAND "")
+
+add_executable(immer_benchmark
+               src/immer_benchmark.cpp)
+
+add_dependencies(immer_benchmark immer)
+
+target_link_libraries(immer_benchmark
+                    PUBLIC CONAN_PKG::google-benchmark
+                    PUBLIC CONAN_PKG::fmt
+                    PUBLIC CONAN_PKG::boost)
+
+target_include_directories(immer_benchmark
+                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::fmt
+                            PUBLIC ${THIRD_PARTY}/immer)

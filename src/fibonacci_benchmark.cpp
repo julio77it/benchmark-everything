@@ -1,3 +1,7 @@
+//
+// Benchmarking fibonacci functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <benchmark/benchmark.h>
 #include "fibonacci.hpp"
 
@@ -11,7 +15,7 @@ static void BM_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            //[[maybe_unused]] auto result = 
+            //[[maybe_unused]] auto result =
             benchmark::DoNotOptimize(
                 fibonacci(k)
             );
@@ -27,7 +31,7 @@ static void BM_Memoized_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            //[[maybe_unused]] auto result = 
+            //[[maybe_unused]] auto result =
             benchmark::DoNotOptimize(
                 memoized_fibonacci(k)
             );
@@ -48,7 +52,7 @@ static void BM_RecursiveMemoized_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            //[[maybe_unused]] auto result = 
+            //[[maybe_unused]] auto result =
             benchmark::DoNotOptimize(
                 recursive_memoized_fibonacci(k)
             );
@@ -64,7 +68,7 @@ static void BM_Cached_fibonacci(benchmark::State& state)
     {
         uint64_t max = static_cast<uint64_t>(state.range(0));
         for (uint64_t k = 0;k <= max; ++k)
-            //[[maybe_unused]] auto result = 
+            //[[maybe_unused]] auto result =
             benchmark::DoNotOptimize(
                 cached_fibonacci(k)
             );

@@ -1,10 +1,14 @@
+//
+// Testing partition functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <fmt/format.h>
 #include "partition.hpp"
 
 int main()
 {
-    std::vector<int> input    = {-4, -2,  0,  1,  5}; 
-    std::vector<int> expected = { 0,  1,  4, 16, 25}; 
+    std::vector<int> input    = {-4, -2,  0,  1,  5};
+    std::vector<int> expected = { 0,  1,  4, 16, 25};
 
     fmt::print("INPUT = [{}] ; EXPECTED = [{}]\n",  fmt::join(input, " "), fmt::join(expected, " "));
 

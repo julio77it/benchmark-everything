@@ -1,3 +1,8 @@
+//
+// partition functions
+// https://marcoarena.wordpress.com/2019/11/28/tale-of-an-insight/
+// Copyright (C) 2020 Giulio Guarnone
+//
 #ifndef PARTITION_HPP
 #define PARTITION_HPP
 #include <vector>
@@ -16,7 +21,7 @@ std::vector<int> partition_simple(std::vector<int> const& input)
 
     std::sort(std::begin(output), std::end(output));
 
-    return output;    
+    return output;
 }
 
 std::vector<int> partition_transform(std::vector<int> const& input)
@@ -26,7 +31,7 @@ std::vector<int> partition_transform(std::vector<int> const& input)
     std::transform(std::begin(input), std::end(input), std::back_insert_iterator(output), [](auto e) { return e * e; });
     std::sort(std::begin(output), std::end(output));
 
-    return output;    
+    return output;
 }
 
 std::vector<int> partition_multiset(std::vector<int> const& input)
@@ -50,16 +55,16 @@ std::vector<int> partition_sortsquares(std::vector<int>& input)
     auto it  = std::find_if(std::begin(input), std::end(input), [](int i) { return i>= 0; });
     auto pos = std::distance(std::begin(input), it);
     auto neg = pos - 1;
- 
+
     auto len = input.size();
     for (std::size_t i = 0; i < len; ++i)
     {
         // negative values over
-        if (neg < 0) 
-        { 
-            output[i] = square(input[pos++]); 
-        } 
-        // positive values over 
+        if (neg < 0)
+        {
+            output[i] = square(input[pos++]);
+        }
+        // positive values over
         else if (pos >= len)
         {
             output[i] = square(input[neg--]);
@@ -115,13 +120,13 @@ std::vector<int> partition_final_cxx20(std::vector<int> const& input)
 std::vector<int> partition_final_range_1st(std::vector<int> const& input)
 {
     std::vector<int> output(input.size());
-    auto firstPos  = ranges::find_if(input, [](auto i){ return i>=0; });          
+    auto firstPos  = ranges::find_if(input, [](auto i){ return i>=0; });
     auto positives = ranges::subrange(firstPos, std::end(input));
     auto negatives = ranges::subrange(std::make_reverse_iterator(firstPos), std::rend(input));
 
     const auto square = [](auto i) { return i*i; };
     ranges::merge(ranges::views::transform(positives, square),
-                  ranges::views::transform(negatives, square), 
+                  ranges::views::transform(negatives, square),
                   std::begin(output));
     return output;
 }
@@ -129,12 +134,12 @@ std::vector<int> partition_final_range_1st(std::vector<int> const& input)
 std::vector<int> partition_final_range_2nd(std::vector<int> const& input)
 {
     std::vector<int> output(input.size());
-    auto positives = ranges::views::drop_while(input, [](auto i){ return i<0; }); 
+    auto positives = ranges::views::drop_while(input, [](auto i){ return i<0; });
     auto negatives = ranges::views::drop_while(ranges::views::reverse(input), [](auto i) { return i>=0; });
 
     const auto square = [](auto i) { return i*i; };
     ranges::merge(ranges::views::transform(positives, square),
-                  ranges::views::transform(negatives, square), 
+                  ranges::views::transform(negatives, square),
                   std::begin(output));
     return output;
 }

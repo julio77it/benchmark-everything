@@ -1,9 +1,13 @@
+//
+// Benchmarking partition functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <benchmark/benchmark.h>
 #include "partition.hpp"
 
 static void BM_partition_simple(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -14,7 +18,7 @@ BENCHMARK(BM_partition_simple);
 
 static void BM_partition_transform(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -25,7 +29,7 @@ BENCHMARK(BM_partition_transform);
 
 static void BM_partition_multiset(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -36,7 +40,7 @@ BENCHMARK(BM_partition_multiset);
 
 static void BM_partition_sortsquares(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -47,7 +51,7 @@ BENCHMARK(BM_partition_sortsquares);
 
 static void BM_partition_final_draft(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -58,7 +62,7 @@ BENCHMARK(BM_partition_final_draft);
 
 static void BM_partition_final_optimized(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -70,7 +74,7 @@ BENCHMARK(BM_partition_final_optimized);
 #ifdef __cplusplus >= 201803L
 static void BM_partition_final_cxx20(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -82,7 +86,7 @@ BENCHMARK(BM_partition_final_cxx20);
 
 static void BM_partition_final_range_1st(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {
@@ -93,7 +97,7 @@ BENCHMARK(BM_partition_final_range_1st);
 
 static void BM_partition_final_range_2nd(benchmark::State& state)
 {
-    std::vector<int> input = {-4, -2,  0,  1,  5}; 
+    std::vector<int> input = {-4, -2,  0,  1,  5};
 
     while(state.KeepRunning())
     {

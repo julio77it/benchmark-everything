@@ -1,3 +1,7 @@
+//
+// Benchmarking factorial functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <benchmark/benchmark.h>
 #include <cmath>
 #include "factorial.hpp"
@@ -9,7 +13,7 @@ static void BM_Factorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        //[[maybe_unused]] auto r = 
+        //[[maybe_unused]] auto r =
         benchmark::DoNotOptimize(
             factorial(n)
         );
@@ -25,7 +29,7 @@ static void BM_MemoizedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        //[[maybe_unused]] auto r = 
+        //[[maybe_unused]] auto r =
         benchmark::DoNotOptimize(
             memoized_factorial(n)
         );
@@ -35,7 +39,7 @@ BENCHMARK(BM_MemoizedFactorial)->RangeMultiplier(2)->Range(2, 16);
 
 auto recursive_memoized_factorial = make_memoized_r<uint64_t(uint64_t)>(
     [](auto& factorial, uint64_t n) {
-        return n <= 1 
+        return n <= 1
              ? 1
              : n * factorial(n - 1);
     });
@@ -46,7 +50,7 @@ static void BM_RecursiveMemoizedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        //[[maybe_unused]] auto r = 
+        //[[maybe_unused]] auto r =
         benchmark::DoNotOptimize(
             recursive_memoized_factorial(n)
         );
@@ -62,7 +66,7 @@ static void BM_CachedFactorial(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        //[[maybe_unused]] auto r = 
+        //[[maybe_unused]] auto r =
         benchmark::DoNotOptimize(
             mem_fact(n)
         );
@@ -76,7 +80,7 @@ static void BM_TGamma(benchmark::State& state)
 
     while (state.KeepRunning())
     {
-        //[[maybe_unused]] auto r = 
+        //[[maybe_unused]] auto r =
         benchmark::DoNotOptimize(
             static_cast<decltype(n)>(std::tgammal(n+1))
         );

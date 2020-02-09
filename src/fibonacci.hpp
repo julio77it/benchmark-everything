@@ -1,3 +1,7 @@
+//
+// fibonacci functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #ifndef FIBONACCI_HPP
 #define FIBONACCI_HPP
 

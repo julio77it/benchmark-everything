@@ -1,3 +1,7 @@
+//
+// Testing fibonacci functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <cmath>
 #include <fmt/format.h>
 #include "fibonacci.hpp"

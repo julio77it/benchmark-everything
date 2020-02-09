@@ -1,3 +1,7 @@
+//
+// Modified Google Benchmark example
+// Copyright (C) 2020 Giulio Guarnone
+//
 #include <benchmark/benchmark.h>
 #include <vector>
 

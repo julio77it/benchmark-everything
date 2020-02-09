@@ -1,3 +1,7 @@
+//
+// factorial functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #ifndef FACTORIAL_HPP
 #define FACTORIAL_HPP
 

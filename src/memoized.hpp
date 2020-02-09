@@ -1,3 +1,7 @@
+//
+// Memoization helper functions
+// Copyright (C) 2020 Giulio Guarnone
+//
 #ifndef MEMOIZED_HPP
 #define MEMOIZED_HPP
 
