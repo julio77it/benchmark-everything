@@ -19,7 +19,7 @@ T gen()
     return ++value;
 }
 
-static void BM_StdVector_BackInsertRaw(benchmark::State& state)
+static void StdVect_BackInsertRaw(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -28,7 +28,7 @@ static void BM_StdVector_BackInsertRaw(benchmark::State& state)
         std::generate_n(std::back_inserter(v), state.range(0), gen<test_type>);
 	}
 }
-static void BM_StdVector_BackInsertSized(benchmark::State& state)
+static void StdVect_BackInsertSized(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -37,7 +37,7 @@ static void BM_StdVector_BackInsertSized(benchmark::State& state)
         std::generate_n(std::back_inserter(v), state.range(0), gen<test_type>);
 	}
 }
-static void BM_StdVector_MiddleInsertRaw(benchmark::State& state)
+static void StdVect_MiddleInsertRaw(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -51,7 +51,7 @@ static void BM_StdVector_MiddleInsertRaw(benchmark::State& state)
 	}
 }
 
-static void BM_StdVector_IteratorVisit(benchmark::State& state)
+static void StdVect_IteratorVisit(benchmark::State& state)
 {
 	std::vector<test_type> v(state.range(0));
 
@@ -65,7 +65,7 @@ static void BM_StdVector_IteratorVisit(benchmark::State& state)
 		}
 	}
 }
-static void BM_StdVector_AlgorithmVisit(benchmark::State& state)
+static void StdVect_AlgorithmVisit(benchmark::State& state)
 {
 	std::vector<test_type> v(state.range(0));
 
@@ -76,7 +76,7 @@ static void BM_StdVector_AlgorithmVisit(benchmark::State& state)
 		std::for_each(v.cbegin(), v.cend(), [](auto e){ [[maybe_unused]] auto i = e; });
 	}
 }
-static void BM_ImmerVector_Default_BackInsertRaw(benchmark::State& state)
+static void ImmerVect_Dflt_BackInsertRaw(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -85,7 +85,7 @@ static void BM_ImmerVector_Default_BackInsertRaw(benchmark::State& state)
         std::generate_n(std::back_inserter(v), state.range(0), gen<test_type>);
 	}
 }
-static void BM_ImmerVector_Default_BackInsertSized(benchmark::State& state)
+static void ImmerVect_Dflt_BackInsertSized(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -95,7 +95,7 @@ static void BM_ImmerVector_Default_BackInsertSized(benchmark::State& state)
 	}
 }
 /*
-static void BM_ImmerVector_Transient_BackInsertRaw(benchmark::State& state)
+static void ImmerVect_Transient_BackInsertRaw(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -108,15 +108,15 @@ static void BM_ImmerVector_Transient_BackInsertRaw(benchmark::State& state)
         v = t.persistent();
 	}
 }
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(10);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(100);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(1000);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(10000);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(100000);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(1000000);
-BENCHMARK(BM_ImmerVector_Transient_BackInsertRaw)->Arg(10000000);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(10);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(100);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(1000);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(10000);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(100000);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(1000000);
+BENCHMARK(ImmerVect_Transient_BackInsertRaw)->Arg(10000000);
 */
-static void BM_ImmerFlexVector_Default_MiddleInsertRaw(benchmark::State& state)
+static void ImmerFlexVect_Dflt_MiddleInsertRaw(benchmark::State& state)
 {
 	for (auto _ : state)
 	{
@@ -130,7 +130,7 @@ static void BM_ImmerFlexVector_Default_MiddleInsertRaw(benchmark::State& state)
 }
 
 
-static void BM_ImmerVector_Default_IteratorVisit(benchmark::State& state)
+static void ImmerVect_Dflt_IteratorVisit(benchmark::State& state)
 {
 	immer::vector<test_type> v(state.range(0));
 
@@ -144,7 +144,7 @@ static void BM_ImmerVector_Default_IteratorVisit(benchmark::State& state)
 		}
 	}
 }
-static void BM_ImmerVector_Default_AlgorithmVisit(benchmark::State& state)
+static void ImmerVect_Dflt_AlgorithmVisit(benchmark::State& state)
 {
 	immer::vector<test_type> v(state.range(0));
 
@@ -159,88 +159,88 @@ static void BM_ImmerVector_Default_AlgorithmVisit(benchmark::State& state)
 
 
 
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(10);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(100);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(1000);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(10000);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(100000);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(1000000);
-BENCHMARK(BM_StdVector_BackInsertRaw)->Arg(10000000);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(10);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(100);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(1000);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(10000);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(100000);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(1000000);
+BENCHMARK(StdVect_BackInsertRaw)->Arg(10000000);
 
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(10);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(100);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(1000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(10000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(100000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(1000000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertRaw)->Arg(10000000);
-
-
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(10);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(100);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(1000);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(10000);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(100000);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(1000000);
-BENCHMARK(BM_StdVector_BackInsertSized)->Arg(10000000);
-
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(10);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(100);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(1000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(10000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(100000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(1000000);
-BENCHMARK(BM_ImmerVector_Default_BackInsertSized)->Arg(10000000);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(10);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(100);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(1000);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(10000);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(100000);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(1000000);
+BENCHMARK(ImmerVect_Dflt_BackInsertRaw)->Arg(10000000);
 
 
+BENCHMARK(StdVect_BackInsertSized)->Arg(10);
+BENCHMARK(StdVect_BackInsertSized)->Arg(100);
+BENCHMARK(StdVect_BackInsertSized)->Arg(1000);
+BENCHMARK(StdVect_BackInsertSized)->Arg(10000);
+BENCHMARK(StdVect_BackInsertSized)->Arg(100000);
+BENCHMARK(StdVect_BackInsertSized)->Arg(1000000);
+BENCHMARK(StdVect_BackInsertSized)->Arg(10000000);
 
-BENCHMARK(BM_StdVector_MiddleInsertRaw)->Arg(10);
-BENCHMARK(BM_StdVector_MiddleInsertRaw)->Arg(100);
-BENCHMARK(BM_StdVector_MiddleInsertRaw)->Arg(1000);
-BENCHMARK(BM_StdVector_MiddleInsertRaw)->Arg(10000);
-BENCHMARK(BM_StdVector_MiddleInsertRaw)->Arg(100000);
-
-BENCHMARK(BM_ImmerFlexVector_Default_MiddleInsertRaw)->Arg(10);
-BENCHMARK(BM_ImmerFlexVector_Default_MiddleInsertRaw)->Arg(100);
-BENCHMARK(BM_ImmerFlexVector_Default_MiddleInsertRaw)->Arg(1000);
-BENCHMARK(BM_ImmerFlexVector_Default_MiddleInsertRaw)->Arg(10000);
-BENCHMARK(BM_ImmerFlexVector_Default_MiddleInsertRaw)->Arg(100000);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(10);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(100);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(1000);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(10000);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(100000);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(1000000);
+BENCHMARK(ImmerVect_Dflt_BackInsertSized)->Arg(10000000);
 
 
 
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(10);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(100);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(1000);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(10000);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(100000);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(1000000);
-BENCHMARK(BM_StdVector_IteratorVisit)->Arg(10000000);
+BENCHMARK(StdVect_MiddleInsertRaw)->Arg(10);
+BENCHMARK(StdVect_MiddleInsertRaw)->Arg(100);
+BENCHMARK(StdVect_MiddleInsertRaw)->Arg(1000);
+BENCHMARK(StdVect_MiddleInsertRaw)->Arg(10000);
+BENCHMARK(StdVect_MiddleInsertRaw)->Arg(100000);
 
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(10);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(100);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(1000);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(10000);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(100000);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(1000000);
-BENCHMARK(BM_ImmerVector_Default_IteratorVisit)->Arg(10000000);
+BENCHMARK(ImmerFlexVect_Dflt_MiddleInsertRaw)->Arg(10);
+BENCHMARK(ImmerFlexVect_Dflt_MiddleInsertRaw)->Arg(100);
+BENCHMARK(ImmerFlexVect_Dflt_MiddleInsertRaw)->Arg(1000);
+BENCHMARK(ImmerFlexVect_Dflt_MiddleInsertRaw)->Arg(10000);
+BENCHMARK(ImmerFlexVect_Dflt_MiddleInsertRaw)->Arg(100000);
 
 
 
+BENCHMARK(StdVect_IteratorVisit)->Arg(10);
+BENCHMARK(StdVect_IteratorVisit)->Arg(100);
+BENCHMARK(StdVect_IteratorVisit)->Arg(1000);
+BENCHMARK(StdVect_IteratorVisit)->Arg(10000);
+BENCHMARK(StdVect_IteratorVisit)->Arg(100000);
+BENCHMARK(StdVect_IteratorVisit)->Arg(1000000);
+BENCHMARK(StdVect_IteratorVisit)->Arg(10000000);
 
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(10);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(100);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(1000);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(10000);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(100000);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(1000000);
-BENCHMARK(BM_StdVector_AlgorithmVisit)->Arg(10000000);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(10);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(100);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(1000);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(10000);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(100000);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(1000000);
+BENCHMARK(ImmerVect_Dflt_IteratorVisit)->Arg(10000000);
 
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(10);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(100);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(1000);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(10000);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(100000);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(1000000);
-BENCHMARK(BM_ImmerVector_Default_AlgorithmVisit)->Arg(10000000);
+
+
+
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(10);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(100);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(1000);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(10000);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(100000);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(1000000);
+BENCHMARK(StdVect_AlgorithmVisit)->Arg(10000000);
+
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(10);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(100);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(1000);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(10000);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(100000);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(1000000);
+BENCHMARK(ImmerVect_Dflt_AlgorithmVisit)->Arg(10000000);
 
 BENCHMARK_MAIN();
