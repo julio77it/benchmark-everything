@@ -1,6 +1,7 @@
 //
 // Memoization helper functions
-// Copyright (C) 2020 Giulio Guarnone
+// from: Ivan Čukić "Functional Programming in C++" Manning Publications
+// https://www.manning.com/books/functional-programming-in-c-plus-plus
 //
 #ifndef MEMOIZED_HPP
 #define MEMOIZED_HPP
