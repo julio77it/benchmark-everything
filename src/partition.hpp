@@ -1,7 +1,6 @@
 //
 // partition functions
 // https://marcoarena.wordpress.com/2019/11/28/tale-of-an-insight/
-// Copyright (C) 2020 Giulio Guarnone
 //
 #ifndef PARTITION_HPP
 #define PARTITION_HPP
