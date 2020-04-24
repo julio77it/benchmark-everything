@@ -54,13 +54,13 @@ add_executable(factorial_benchmark
 	           src/factorial_benchmark.cpp)
 
 target_link_libraries(factorial_benchmark
-                        PUBLIC CONAN_PKG::google-benchmark
+                        PUBLIC CONAN_PKG::benchmark
                         PUBLIC CONAN_PKG::fmt
                         PUBLIC CONAN_PKG::range-v3
                         PUBLIC CONAN_PKG::boost)
 
 target_include_directories(factorial_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::range-v3
                             PUBLIC CONAN_PKG::boost)
@@ -72,12 +72,12 @@ add_executable(media_benchmark
 	           src/media_benchmark.cpp)
 
 target_link_libraries(media_benchmark
-                        PUBLIC CONAN_PKG::TBB
-                        PUBLIC CONAN_PKG::google-benchmark
+                        PUBLIC CONAN_PKG::tbb
+                        PUBLIC CONAN_PKG::benchmark
                         PUBLIC CONAN_PKG::range-v3)
 
 target_include_directories(media_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::range-v3)
 
 
@@ -97,12 +97,12 @@ add_executable(fibonacci_benchmark
 	           src/fibonacci_benchmark.cpp)
 
 target_link_libraries(fibonacci_benchmark
-                      PUBLIC CONAN_PKG::google-benchmark
+                      PUBLIC CONAN_PKG::benchmark
                       PUBLIC CONAN_PKG::fmt
                       PUBLIC CONAN_PKG::boost)
 
 target_include_directories(fibonacci_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::boost)
 
@@ -113,12 +113,12 @@ add_executable(string_benchmark
                    src/string_benchmark.cpp)
 
 target_link_libraries(string_benchmark
-                      PUBLIC CONAN_PKG::google-benchmark
+                      PUBLIC CONAN_PKG::benchmark
                       PUBLIC CONAN_PKG::fmt
                       PUBLIC CONAN_PKG::boost)
 
 target_include_directories(string_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::boost)
 
@@ -140,13 +140,13 @@ add_executable(partition_benchmark
                 src/partition_benchmark.cpp)
 
 target_link_libraries(partition_benchmark
-                    PUBLIC CONAN_PKG::google-benchmark
+                    PUBLIC CONAN_PKG::benchmark
                     PUBLIC CONAN_PKG::fmt
                     PUBLIC CONAN_PKG::boost
                     PUBLIC CONAN_PKG::range-v3)
 
 target_include_directories(partition_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC CONAN_PKG::boost
                             PUBLIC CONAN_PKG::range-v3)
@@ -169,11 +169,11 @@ add_executable(immer_benchmark
 add_dependencies(immer_benchmark immer)
 
 target_link_libraries(immer_benchmark
-                    PUBLIC CONAN_PKG::google-benchmark
+                    PUBLIC CONAN_PKG::benchmark
                     PUBLIC CONAN_PKG::fmt
                     PUBLIC CONAN_PKG::boost)
 
 target_include_directories(immer_benchmark
-                            PUBLIC CONAN_PKG::google-benchmark
+                            PUBLIC CONAN_PKG::benchmark
                             PUBLIC CONAN_PKG::fmt
                             PUBLIC ${THIRD_PARTY}/immer)
